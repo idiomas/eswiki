@@ -35,9 +35,8 @@
   <h1>Idiomas: Eswiki</h1>
   <p>Enumerate English-language articles of interest that have corresponding Spanish-language articulos.</p>
   </div>
-  <button id='save'>Me gusta</button>
-  <button id='remove'>No gracias</button>
-  <div id="status"></div>
+  <button>Me gusta</button>
+  <button>No gracias</button>
   </body>
   <script src="storage.js"></script>
 </html>
