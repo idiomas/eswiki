@@ -4,20 +4,22 @@
   "name": "Idiomas: Eswiki",
   "description": "This extension allows users to enumerate English articles of interest that have corresponding Spanish wikipedia entries.",
   "version": "1.0",
-  "options_page": "options.html",
-  "content_scripts": [
-      {
-        "matches": ["http://en.wikipedia.org/", "http://es.wikipedia.org/"],
-        "js": ["wikidict.js", "popup.js", "options.js"]
-      }
-    ],
-
+  "background": { "scripts": ["background.js"] },
   "permissions": [
     "storage",
     "tabs"
   ],
-  "browser_action": {
-    "default_icon": "icon2.png",
-    "default_popup": "popup.html"
+"content_scripts" : [
+      {
+        "matches" : [
+          "http://*.wikipedia.org/wiki/*"
+        ],
+        "js" : ["contentscript.js"],
+        "run_at" : "document_end",
+        "all_frames" : false
+      }
+    ],
+"page_action": {
+    "default_icon": "icon2.png"
   }
 }
