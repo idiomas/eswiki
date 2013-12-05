@@ -11,8 +11,8 @@ function checkExistence(url){
   setUrl(url);
   chrome.storage.local.get(null, function(saved) {
     for (var key in saved) {
+      console.log(key + " : " + saved[key]);
       if (gurl == saved[key]) {
-        console.log("isSaved");
         savedKey = key;
         isSaved(true);
         return;
@@ -48,14 +48,18 @@ function isSaved(bool) {
 chrome.runtime.onMessage.addListener(checkExistence);
 
 function save_url(tab) {
+  chrome.pageAction.onClicked.removeListener(save_url);
   var time = new Date().toJSON().toString(); 
   var item = {};
   item[time] = gurl;
+  console.log("i am being saved: " + gurl);
   chrome.storage.local.set(item);
   chrome.pageAction.setIcon({tabId: tab.id, path: 'icon.png'});
 }
 
 function remove_url(tab) {
+  chrome.pageAction.onClicked.removeListener(remove_url);
+  console.log("i am being saved: " + savedKey);
   chrome.storage.local.remove(savedKey);
   chrome.pageAction.setIcon({tabId: tab.id, path: 'icon2.png'});
 }

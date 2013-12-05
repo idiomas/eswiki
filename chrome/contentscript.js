@@ -4,11 +4,12 @@ if (typeof document.getElementsByClassName('interwiki-es')[0] != "undefined") {
  interwiki = document.getElementsByClassName('interwiki-es')[0].innerHTML;
 }
 
-var regex = new RegExp('es\.wikipedia\.org/wiki/[^\s"]+\"');
+var regex = new RegExp('//es\.wikipedia\.org/[^\\s\"]+');
 var match = regex.exec(interwiki);
-console.log(match);
+
 
 if (match != null) {
-  var url = "http://" + match;
+  var url = "http:" + match[0];
+  console.log(url);
   chrome.runtime.sendMessage(url);
 }
