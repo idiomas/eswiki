@@ -24,7 +24,8 @@ function checkExistence(url){
 }
 
 function setUrl(url) {
-    gurl = url;
+  gurl = url;
+  return;
 }
 
 function isSaved(bool) {
@@ -35,12 +36,14 @@ function isSaved(bool) {
       chrome.pageAction.setIcon({tabId: tabId, path: 'icon.png'});
       chrome.pageAction.onClicked.addListener(remove_url);
       console.log('ready to remove');
+      return;
     }
     else {
       chrome.pageAction.show(tabId);
       chrome.pageAction.setIcon({tabId: tabId, path: 'icon2.png'});
       chrome.pageAction.onClicked.addListener(save_url);
       console.log('ready to save');
+      return;
     }
   });
 }
@@ -55,11 +58,13 @@ function save_url(tab) {
   console.log("i am being saved: " + gurl);
   chrome.storage.local.set(item);
   chrome.pageAction.setIcon({tabId: tab.id, path: 'icon.png'});
+  return;
 }
 
 function remove_url(tab) {
   chrome.pageAction.onClicked.removeListener(remove_url);
-  console.log("i am being saved: " + savedKey);
+  console.log("i am being removed: " + savedKey);
   chrome.storage.local.remove(savedKey);
   chrome.pageAction.setIcon({tabId: tab.id, path: 'icon2.png'});
+  return;
 }
