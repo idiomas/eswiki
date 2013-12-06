@@ -52,6 +52,9 @@ chrome.runtime.onMessage.addListener(checkExistence);
 
 function save_url(tab) {
   chrome.pageAction.onClicked.removeListener(save_url);
+  while (chrome.pageAction.onClicked.hasListener(save_url)) {
+    chrome.pageAction.onClicked.removeListener(save_url);
+  }
   var time = new Date().toJSON().toString(); 
   var item = {};
   item[time] = gurl;
@@ -63,6 +66,9 @@ function save_url(tab) {
 
 function remove_url(tab) {
   chrome.pageAction.onClicked.removeListener(remove_url);
+  while (chrome.pageAction.onClicked.hasListener(remove_url)) {
+    chrome.pageAction.onClicked.removeListener(remove_url);
+  }
   console.log("i am being removed: " + savedKey);
   chrome.storage.local.remove(savedKey);
   chrome.pageAction.setIcon({tabId: tab.id, path: 'icon2.png'});
