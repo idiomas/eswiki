@@ -1,8 +1,13 @@
  # -*- coding: utf-8 -*
-import nltk, urllib, re, string
+import nltk, urllib, re, string, HTMLParser
 from urllib import urlopen
 
+#Return X number of terms from frequency distribution
+x = 100
+
 raw = ""
+
+#List of interesting urls of spanish-language wikipedia articles
 urls = [
 "http://es.wikipedia.org/wiki/Tango",
 "http://es.wikipedia.org/wiki/Tango",
@@ -11,20 +16,23 @@ urls = [
 "http://es.wikipedia.org/wiki/Felis_silvestris_catus",
 ]
 
-print urls
-
+#Append all html to raw
 for url in urls:
-    raw += urlopen(url).read()
+    raw += urllib.urlopen(url).read()
 
+#Get rid of HTML words
+raw = nltk.clean_html(raw)
+#Split up raw text into tokens
 raw= nltk.word_tokenize(raw)
+#spanish language stopwords
 stops = nltk.corpus.stopwords.words('spanish')
 
-tokens = [w.lower().strip(string.punctuation) for w in raw if w.lower().strip(string.punctuation) not in stops]
-tokens = [w for w in tokens if w.isalpha()]
+#lowercase words, strip of punctuation, remove stopwords
+tokens = [w.lower().strip(string.punctuation)  for w in raw if w.lower().strip(string.punctuation) not in stops and w != ' ']
+regex = re.compile("^[0-9]+")
+tokens = [w for w in tokens if not regex.match(w)]
 
-freq = (nltk.FreqDist(tokens)).keys()[:100]
+freq = (nltk.FreqDist(tokens)).keys()[:x]
 
-print(freq)
-
-
-
+for w in freq:
+    print(w)
