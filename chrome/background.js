@@ -1,3 +1,5 @@
+#copyright Spencer Hitchcock and Huda Khayrallah 
+
 //function checkForCorrelate(tabId, changeInfo, tab) {
 //    if () {
 //        return true;
