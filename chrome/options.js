@@ -1,3 +1,5 @@
+//copyright Spencer Hitchcock and Huda Khayrallah 
+
 // Restores articulos to saved values from localStorage.
 function restore_saved() {
   var select = document.getElementById("articulos");
