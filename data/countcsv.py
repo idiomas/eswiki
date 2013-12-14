@@ -1,3 +1,5 @@
+#copyright Spencer Hitchcock and Huda Khayrallah 
+
 import csv
 
 with open('test.csv', 'r') as fp:
