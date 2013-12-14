@@ -1,4 +1,5 @@
 # This Python file uses the following encoding: utf-8
+#copyright Spencer Hitchcock and Huda Khayrallah 
 import csv, re
 
 test = "(702197,'en','Extended Play (Ladytron EP)'),(540923,'en','Extended SMTP'), (271086,'ca','Àtic (arquitectura)"
