@@ -1,4 +1,5 @@
  # -*- coding: utf-8 -*
+ #copyright Spencer Hitchcock and Huda Khayrallah 
 import nltk, urllib, re, string, HTMLParser
 from urllib import urlopen
 
