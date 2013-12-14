@@ -1,4 +1,5 @@
 import nltk, numpy, urllib, string, re
+#copyright Spencer Hitchcock and Huda Khayrallah 
 
 revolution = urllib.urlopen('https://es.wikipedia.org/wiki/Revoluci%C3%B3n_mexicana').read()
 m = re.search(r'(en\.wikipedia\.org/wiki/[\S^"]+)\"', revolution)
