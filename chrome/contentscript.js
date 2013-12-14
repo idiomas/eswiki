@@ -1,4 +1,4 @@
-#copyright Spencer Hitchcock and Huda Khayrallah 
+//copyright Spencer Hitchcock and Huda Khayrallah 
 
 var interwiki = null;
 
